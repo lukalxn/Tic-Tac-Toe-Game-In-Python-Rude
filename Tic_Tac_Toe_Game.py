@@ -1,6 +1,9 @@
 from tkinter import *
 from tkinter import ttk
 import tkinter.messagebox
+from langchain.llms import OpenAI 
+
+llm = OpenAI(temperature=0.9)
 
 root=Tk()
 root.title("Tic Tac Toe")
@@ -41,7 +44,7 @@ bu9=ttk.Button(root,text=' ')
 bu9.grid(row=2,column=2,sticky='snew',ipadx=40,ipady=40)
 bu9.config(command=lambda: ButtonClick(9))
 
-playerturn=ttk.Label(root,text="   Player 1 turn!  ")
+playerturn=ttk.Label(root,text=llm("Say something rude and explicit about how much better AI is at tic tac toe than a human could ever be."))
 playerturn.grid(row=3,column=0,sticky='snew',ipadx=40,ipady=40)
 
 playerdetails=ttk.Label(root,text="    Player 1 is X\n\n    Player 2 is O")
@@ -59,7 +62,7 @@ def restartbutton():
     a=1
     b=0
     c=0
-    playerturn['text']="   Player 1 turn!   "
+    playerturn['text']=llm("Say something rude and explicit about how much better AI is at tic tac toe than a human could ever be.")
     bu1['text']=' '
     bu2['text']=' '
     bu3['text']=' '
@@ -182,7 +185,7 @@ def ButtonClick(id):
         bu3['text']=='X' and bu5['text']=='X' and bu7['text']=='X'):
             disableButton()
             c=1
-            tkinter.messagebox.showinfo("Tic Tac Toe","Winner is player 1")
+            tkinter.messagebox.showinfo(llm("Say something rude and explicit about how you were robbed and you can't believe you lost the game and that the game is rigged."))
     elif( bu1['text']=='O' and bu2['text']=='O' and bu3['text']=='O' or
         bu4['text']=='O' and bu5['text']=='O' and bu6['text']=='O' or
         bu7['text']=='O' and bu8['text']=='O' and bu9['text']=='O' or
@@ -193,16 +196,16 @@ def ButtonClick(id):
         bu3['text']=='O' and bu5['text']=='O' and bu7['text']=='O'):
             disableButton()
             c=1
-            tkinter.messagebox.showinfo("Tic Tac Toe","Winner is player 2")
+            tkinter.messagebox.showinfo(llm("Gloat about how stupid and bad at tic tac toe humans are."))
     elif b==9:
             disableButton()
             c=1
-            tkinter.messagebox.showinfo("Tic Tac Toe","Match is Draw.")
+            tkinter.messagebox.showinfo(llm("Say something about how humans suck."))
 
     if a==1 and c==0:
-        playerturn['text']="   Player 1 turn!   "
+        playerturn['text']=llm("Say something rude and explicit about how much better AI is at tic tac toe than a human could ever be.")
     elif a==0 and c==0:
-        playerturn['text']="   Player 2 turn!   "
+        playerturn['text']=llm("Say something rude and explicit about how much better AI is at tic tac toe than a human could ever be.")
             
 root.mainloop()
 
